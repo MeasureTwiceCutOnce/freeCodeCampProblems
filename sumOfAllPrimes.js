@@ -7,14 +7,44 @@
 
 // get User input and validate
 
-
+function createArray(num) {
+  let unCheckedArray = [];
+  
+  if (!(num <= 0) && !(Number.isNaN(num) && (Number.isInteger(num)))) {
+    
+  }
+  return checkIfPrime(unCheckedArray);
+}
 
 // Check for Primes and return as array primeArray
+function checkIfPrime(array) {
+  let checkedArray = [];
 
+  for (let i = 2; i < array.length; i++) {
+    const element = array[i];
+    if (element % 2 === 0 && element % element === 0 &&  ) {
+      checkedArray.push(array[i]);
+    } else {
+      
+    }
+  }
+  return sumPrimes(checkedArray)
+}
 
 
 
 //  Add that array = result
+function sumPrimes(array) {
+  
+}
+
+
+
+
+
+
+
+
 
 
 function sumPrimes(num) {
