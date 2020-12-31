@@ -5,15 +5,13 @@
 // shift if found return foundElement else return droppedArray;
 
 function dropElements(arr, func) {
-  let droppedArray = [];
-  let foundElement = [];
-  
 
-  if (func === true) {
-      arr.push(func)
-      return foundElement;
-  } else {
-    arr.shift(func);
+  for (let i = 0; i < arr.length; i++) {
+    if (func(arr[0])) {
+      break;
+    } else {
+      arr.shift();
+    } 
+    return arr;
   }
 }
-
