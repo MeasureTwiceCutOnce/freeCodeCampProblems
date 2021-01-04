@@ -3,25 +3,29 @@
 function palindrome(str) {
   let stringInNumbers = [];
 
-  for (i = 0; i < str.length; i++)
-  stringInNumbers.push(str.toLowerCase().charCodeAt(i));
+  // for (i = 0; i < str.length; i++)
+  stringInNumbers.push(str.toLowerCase().replace(/[^0-9a-z]/gi, ''));
 
-  let halfMark = stringInNumbers/2;
+  if (stringInNumbers.length % 2 === 0 || stringInNumbers.length < 2) {
+    return false;
+  } else {
+    for (let i = 0; i < (stringInNumbers.length - 1) / 2; i++) {
+      const firstHalfOfNumbers = stringInNumbers[i];
+      // const secondHalfIndexes = stringInNumbers.indexOf[i];
+    }
 
-  for (let i = 0; i < (stringInNumbers.length) / 2; i++) {
-    const firstHalfNumbers = stringInNumbers[i];
-    const firstHalfIndexes = stringInNumbers[i];
+      for (let j = (stringInNumbers.length + 1) / 2; j < stringInNumbers.length; j++){
+      const secondHalfNumbers = stringInNumbers[i];
+      // const secondHalfIndexes = stringInNumbers.indexOf[i];
+
+      if (firstHalfOfNumbers === secondHalfNumbers) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
   }
-
-  for (let i = stringInNumbers.length / 2; i < stringInNumbers.length; i++){
-    const secondHalfNumbers = stringInNumbers[i];
-    const secondHalfIndexes = stringInNumbers.indexOf[i];
-
-  }
-
-
-
-  console.log(stringInNumbers);
 }
 
 
@@ -29,8 +33,26 @@ function palindrome(str) {
 //
 // match the numbers and indexes
 
-palindrome("eye");
-palindrome("civic");
-palindrome("racecar");
-palindrome("Never odd or even");
-palindrome("Doc note I dissent A fast never prevents a fatness I diet on cod");
+console.log(palindrome("eye"));
+console.log(palindrome("civic"));
+console.log(palindrome("racecar"));
+console.log(palindrome("Never odd or even"));
+console.log(palindrome("Doc note I dissent A fast never prevents a fatness I diet on cod"));
+console.log(palindrome("not a palindrome"));
+console.log(palindrome("A man, a plan, a canal. Panama"));
+console.log(palindrome("My age is 0, 0 si ega ym.")); //true
+console.log(palindrome("1 eye for of 1 eye.")); //false
+
+// a possible correct answer. so easy, why didn't I think of this.
+
+// function palindrome(str) {
+//   return (
+//     str.replace(/[\W_]/g, "").toLowerCase() ===
+//     str
+//       .replace(/[\W_]/g, "")
+//       .toLowerCase()
+//       .split("")
+//       .reverse()
+//       .join("")
+//   );
+// }
