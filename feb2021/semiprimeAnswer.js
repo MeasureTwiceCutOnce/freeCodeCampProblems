@@ -1,0 +1,41 @@
+// This answer is a lot more complicated than I expected. This is somethign that I will need to be able to tackle after a few more months...or less.
+function isSemiPrime(n) {
+    if (n <= 3) return false;
+
+    var ans = [];
+    var done = false;
+    while (!done) {
+      if (n % 2 === 0) {
+        ans.push(2);
+        n /= 2;
+        continue;
+      }
+      if (n % 3 === 0) {
+        ans.push(3);
+        n /= 3;
+        continue;
+      }
+      if (n === 1) return ans.length == 2;
+      var sr = Math.sqrt(n);
+      done = true;
+      // try to divide the checked number by all numbers till its square root.
+      for (var i = 6; i <= sr; i += 6) {
+        if (n % (i - 1) === 0) {
+          // is n divisible by i-1?
+          ans.push(i - 1);
+          n /= i - 1;
+          done = false;
+          break;
+        }
+        if (n % (i + 1) === 0) {
+          // is n divisible by i+1?
+          ans.push(i + 1);
+          n /= i + 1;
+          done = false;
+          break;
+        }
+      }
+    }
+    ans.push(n);
+    return ans.length == 2;
+  }
